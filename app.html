@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jirani — Find a verified errand runner in Kenya</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="app-header">
+    <div class="container app-header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"></span>Jirani</a>
+
+      <nav class="app-nav" aria-label="Main">
+        <a href="#browse" data-view="browse">Find a runner</a>
+        <a href="#join" data-view="join">Become a runner</a>
+        <a href="#dashboard" data-view="dashboard">My dashboard</a>
+      </nav>
+
+      <div class="app-tools">
+        <label class="sr-only" for="currency">Show prices in</label>
+        <select id="currency" aria-label="Currency"></select>
+        <div id="auth-area"></div>
+      </div>
+    </div>
+    <div class="shuka"></div>
+  </header>
+
+  <main class="container">
+
+    <!-- ============ VIEW: BROWSE ============ -->
+    <section id="view-browse" class="view">
+      <div class="browse-intro">
+        <h1>Who do you want to run an errand for you?</h1>
+        <p>Pick the county back home. Every runner below has uploaded a National ID and KRA PIN and been verified.</p>
+      </div>
+
+      <form class="filters" id="filters" onsubmit="return false">
+        <div class="field">
+          <label for="f-county">County</label>
+          <select id="f-county"></select>
+        </div>
+        <div class="field">
+          <label for="f-service">Errand type</label>
+          <select id="f-service"></select>
+        </div>
+        <div class="field">
+          <label for="f-sort">Sort by</label>
+          <select id="f-sort">
+            <option value="rating">Best rated</option>
+            <option value="price">Lowest price</option>
+            <option value="reviews">Most reviews</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-q">Search name or town</label>
+          <input id="f-q" type="text" placeholder="e.g. Laban, Eldoret" />
+        </div>
+      </form>
+
+      <p id="result-count" class="result-count"></p>
+      <div id="runner-grid" class="runner-grid"></div>
+    </section>
+
+    <!-- ============ VIEW: BECOME A RUNNER ============ -->
+    <section id="view-join" class="view" hidden>
+      <div class="join-wrap">
+        <div class="join-side">
+          <h1>Get paid for the errands you already know how to run.</h1>
+          <p>Families abroad are looking for someone they can trust. Show them it is you. We verify before your profile goes live.</p>
+          <ul class="checklist">
+            <li>National ID (front) and a selfie holding it</li>
+            <li>KRA PIN certificate number</li>
+            <li>Your county and town</li>
+            <li>The errands you offer and your starting rate</li>
+          </ul>
+          <p class="note">Your documents are used for verification only and are never shown on your public profile. Only a masked ID is displayed.</p>
+        </div>
+
+        <div id="join-panel"></div>
+      </div>
+    </section>
+
+    <!-- ============ VIEW: DASHBOARD ============ -->
+    <section id="view-dashboard" class="view" hidden>
+      <div id="dashboard-panel"></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="shuka"></div>
+    <div class="container">
+      <p>Jirani is a demo prototype. Runners shown are sample data. Always confirm identity before sending money.</p>
+    </div>
+  </footer>
+
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
