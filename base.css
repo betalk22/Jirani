@@ -1,0 +1,247 @@
+/* =====================================================
+   JIRANI — base styles (shared by website + app)
+   Edit the colours/fonts in :root and the whole
+   project changes with it.
+   ===================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Colours — taken from the Kenyan flag + shuka cloth */
+  --green: #0b5d35;
+  --green-deep: #073d23;
+  --green-soft: #e3f0e8;
+  --red: #b3261e;
+  --red-soft: #fbe9e7;
+  --ochre: #e8a33d;
+  --ochre-soft: #fdf1da;
+  --ink: #14201a;
+  --muted: #5b6a61;
+  --chalk: #f6f7f2;
+  --paper: #ffffff;
+  --line: #dde3da;
+
+  /* Fonts */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+
+  /* Shape */
+  --r-s: 8px;
+  --r-m: 14px;
+  --r-l: 28px;
+
+  --shadow: 0 10px 30px -12px rgba(7, 61, 35, 0.35);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--chalk);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+a { color: var(--green); }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 2px;
+}
+
+.container { width: min(1140px, 100% - 2.5rem); margin-inline: auto; }
+
+/* ---------- The shuka strip (signature element) ---------- */
+.shuka {
+  height: 14px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0 36px,
+    #111 36px 42px,
+    #fff 42px 48px,
+    var(--green) 48px 84px,
+    #111 84px 90px,
+    #fff 90px 96px
+  );
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font: 600 1rem var(--font-body);
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-deep); }
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: #8f1d17; }
+.btn-ochre { background: var(--ochre); color: var(--ink); }
+.btn-ochre:hover { background: #d99529; }
+.btn-ghost { background: transparent; color: var(--green); border-color: var(--green); }
+.btn-ghost:hover { background: var(--green-soft); }
+.btn-light { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.55); }
+.btn-light:hover { background: rgba(255, 255, 255, 0.12); }
+.btn-small { padding: 0.45rem 1rem; font-size: 0.9rem; }
+.btn-block { width: 100%; }
+
+/* ---------- Brand ---------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  color: inherit;
+  text-decoration: none;
+}
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, transparent 0 40%, #fff 40% 50%, transparent 50%),
+    linear-gradient(0deg, var(--green) 0 50%, var(--red) 50%);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Badges & chips ---------- */
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-pending {
+  display: inline-flex;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--ochre-soft);
+  color: #7a5200;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ---------- Forms ---------- */
+.field { display: grid; gap: 0.35rem; margin-bottom: 1rem; }
+.field label, .field legend { font-weight: 600; font-size: 0.92rem; }
+.field small { color: var(--muted); }
+
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"],
+input[type="number"], input[type="date"], select, textarea {
+  width: 100%;
+  font: 1rem var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-s);
+  padding: 0.7rem 0.85rem;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--green);
+  outline: 3px solid var(--green-soft);
+}
+textarea { min-height: 100px; resize: vertical; }
+
+.form-error {
+  background: var(--red-soft);
+  color: var(--red);
+  border-radius: var(--r-s);
+  padding: 0.6rem 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Modal ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 30, 18, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 100;
+  overflow-y: auto;
+}
+.modal {
+  background: var(--paper);
+  border-radius: var(--r-l);
+  width: min(640px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 1.75rem;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--chalk);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: var(--green-deep);
+  color: #fff;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  z-index: 200;
+  box-shadow: var(--shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
